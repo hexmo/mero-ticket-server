@@ -4,10 +4,10 @@ class Vehicle < ApplicationRecord
   belongs_to :user
   has_many_attached :images
 
-  validates :license_plate, :name, :phone, :description, :type, :images, presence: true
+  validates :license_plate, :name, :phone, :description, :facility, :images, presence: true
   validates :license_plate, uniqueness: true
 
-  enum type: {
+  enum facility: {
     deluxe: 'Deluxe',
     ac: 'A/C',
     air_suspension: 'Air Suspension',

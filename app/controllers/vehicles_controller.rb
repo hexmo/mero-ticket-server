@@ -2,6 +2,7 @@
 
 # Vehicle controller
 class VehiclesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_vehicle, only: %i[show update destroy]
 
   # GET /vehicles
@@ -50,6 +51,6 @@ class VehiclesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def vehicle_params
-    params.require(:vehicle).permit(:name, :type, :user_id, :license_plate, :description, :phone, images: [])
+    params.require(:vehicle).permit(:name, :facility, :user_id, :license_plate, :description, :phone, images: [])
   end
 end
