@@ -21,6 +21,8 @@ gem 'puma', '~> 5.0'
 
 gem 'devise_token_auth'
 
+gem 'rails_admin', '2.2.1'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
