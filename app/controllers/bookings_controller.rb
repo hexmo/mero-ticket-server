@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :update, :destroy]
+  before_action :set_booking, only: %i[show update destroy]
 
   # GET /bookings
   def index
-    @bookings = Booking.all
-
+    @bookings = Booking.where(search_params)
+    # @bookings = Booking.all
     render json: @bookings
   end
 
@@ -39,13 +41,19 @@ class BookingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_booking
-      @booking = Booking.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def booking_params
-      params.require(:booking).permit(:vehicle_id, :start_location, :end_location, :eta, :journery_date, :journey_time, :seats)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def booking_params
+    params.require(:booking).permit(:vehicle_id, :start_location, :end_location, :eta, :journery_date, :journey_time,
+                                    :seats)
+  end
+
+  def search_params
+    params.require(:booking).permit(:start_location, :end_location, :journery_date)
+  end
 end
