@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
 
   # GET /bookings
   def index
-    @bookings = Booking.where(search_params)
+    @bookings = Booking.joins(:vehicle).where(search_params).select('bookings.*, vehicles.*')
     # @bookings = Booking.all
     render json: @bookings
   end
