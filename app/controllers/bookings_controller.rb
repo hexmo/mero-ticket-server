@@ -54,6 +54,6 @@ class BookingsController < ApplicationController
   end
 
   def search_params
-    params.require(:booking).permit(:start_location, :end_location, :journery_date)
+    params.permit(:start_location, :end_location, :journery_date)
   end
 end
