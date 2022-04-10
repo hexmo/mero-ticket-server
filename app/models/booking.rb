@@ -3,7 +3,7 @@
 class Booking < ApplicationRecord
   belongs_to :vehicle
 
-  validates :start_location, :end_location, :eta, :journery_date, :journey_time, presence: true
+  validates :start_location, :end_location, :eta, :journery_date, :journey_time, :ticket_price, presence: true
 
   validate :check_start_and_end_location
 
