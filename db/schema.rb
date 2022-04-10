@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_10_021321) do
+ActiveRecord::Schema.define(version: 2022_04_10_025056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2022_04_10_021321) do
     t.integer "eta"
     t.date "journery_date"
     t.time "journey_time"
-    t.jsonb "seats"
+    t.jsonb "seats", default: [{"id"=>"e99"}, {"id"=>"e100"}, {"id"=>"e1"}, {"id"=>"b1", "booked"=>false}, {"id"=>"b2", "booked"=>false}, {"id"=>"a1", "booked"=>false}, {"id"=>"a2", "booked"=>false}, {"id"=>"e2"}, {"id"=>"b3", "booked"=>false}, {"id"=>"b4", "booked"=>false}, {"id"=>"a3", "booked"=>false}, {"id"=>"a4", "booked"=>false}, {"id"=>"e3"}, {"id"=>"b5", "booked"=>false}, {"id"=>"b6", "booked"=>false}, {"id"=>"a5", "booked"=>false}, {"id"=>"a6", "booked"=>false}, {"id"=>"e5"}, {"id"=>"b7", "booked"=>false}, {"id"=>"b8", "booked"=>false}, {"id"=>"a7", "booked"=>false}, {"id"=>"a8", "booked"=>false}, {"id"=>"e6"}, {"id"=>"b9", "booked"=>false}, {"id"=>"b10", "booked"=>false}, {"id"=>"a9", "booked"=>false}, {"id"=>"a10", "booked"=>false}, {"id"=>"e7"}, {"id"=>"b11", "booked"=>false}, {"id"=>"b12", "booked"=>false}, {"id"=>"a11", "booked"=>false}, {"id"=>"a12", "booked"=>false}, {"id"=>"e8"}, {"id"=>"b13", "booked"=>false}, {"id"=>"b14", "booked"=>false}, {"id"=>"a13", "booked"=>false}, {"id"=>"a14", "booked"=>false}, {"id"=>"e8"}, {"id"=>"b15", "booked"=>false}, {"id"=>"b16", "booked"=>false}, {"id"=>"a15", "booked"=>false}, {"id"=>"a16", "booked"=>false}, {"id"=>"a17", "booked"=>false}, {"id"=>"b17", "booked"=>false}, {"id"=>"b18", "booked"=>false}]
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "ticket_price"
