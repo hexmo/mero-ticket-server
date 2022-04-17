@@ -14,7 +14,7 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/1
   def show
-    render json: @vehicle
+    render json: @vehicle.as_json.merge({ images: @vehicle.images.map { |image| url_for(image) } })
   end
 
   # POST /vehicles
