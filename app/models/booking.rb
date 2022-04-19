@@ -40,4 +40,8 @@ class Booking < ApplicationRecord
     dang: 'Dang',
     kailali: 'Kailali'
   }, _suffix: true
+
+  def remaining_seats
+    seats.reject { |seat| seat['booked'] }.size
+  end
 end

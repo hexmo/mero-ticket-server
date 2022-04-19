@@ -7,8 +7,10 @@ class BookingsController < ApplicationController
   # GET /bookings
   def index
     @bookings = Booking.joins(:vehicle).where(search_params).select('bookings.*, vehicles.*, bookings.id as booking_id')
-    # @bookings = Booking.all
-    puts search_params.to_json
+    @bookings = @bookings.map do |booking|
+      booking.as_json.merge({ remaining_seats: booking.remaining_seats })
+    end
+
     render json: @bookings
   end
 
