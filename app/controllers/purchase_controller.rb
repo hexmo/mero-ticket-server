@@ -6,14 +6,26 @@ class PurchaseController < ApplicationController
 
   # GET /booked_tickets
   def booked_tickets
-    @bookings = current_user.tickets
+    @bookings = []
 
-    render json: @bookings.as_json
+    current_user.tickets.each do |ticket|
+      if ticket.booking.journery_date > 1.days.ago
+        @bookings.push({ ticket: ticket, booking: ticket&.booking, vehicle: ticket&.booking&.vehicle })
+      end
+    end
+
+    render json: @bookings
   end
 
   # GET /expired_tickets
   def expired_tickets
-    @bookings = current_user.tickets
+    @bookings = []
+
+    current_user.tickets.each do |ticket|
+      if ticket.booking.journery_date < 1.days.ago
+        @bookings.push({ ticket: ticket, booking: ticket&.booking, vehicle: ticket&.booking&.vehicle })
+      end
+    end
 
     render json: @bookings
   end
