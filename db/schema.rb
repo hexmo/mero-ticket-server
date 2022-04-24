@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_165217) do
+ActiveRecord::Schema.define(version: 2022_04_23_052410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 2022_04_18_165217) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "ticket_price"
     t.index ["vehicle_id"], name: "index_bookings_on_vehicle_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "vehicle_id", null: false
+    t.integer "rating"
+    t.text "review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["vehicle_id"], name: "index_reviews_on_vehicle_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -110,6 +121,8 @@ ActiveRecord::Schema.define(version: 2022_04_18_165217) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "vehicles"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "vehicles"
   add_foreign_key "tickets", "bookings"
   add_foreign_key "tickets", "users"
   add_foreign_key "vehicles", "users"

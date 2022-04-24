@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   get '/booked_tickets', to: 'purchase#booked_tickets'
   get '/expired_tickets', to: 'purchase#expired_tickets'
+  post '/review_present', to: 'reviews#review_present'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
